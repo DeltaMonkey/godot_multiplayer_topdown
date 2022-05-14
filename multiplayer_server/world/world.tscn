@@ -6,3 +6,5 @@
 script = ExtResource( 1 )
 
 [node name="players" type="Node" parent="."]
+
+[node name="enemies" type="Node" parent="."]
