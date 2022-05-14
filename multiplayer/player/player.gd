@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const MAXSPEED = 100
+const MAXSPEED = 500
 const ACCELERATION = 300
 const FRICTION = 200
 
@@ -39,11 +39,11 @@ func get_input_vector():
 func apply_movement(input_vector, delta):
 	look_at(get_global_mouse_position())
 	if input_vector != Vector2.ZERO:
-		motion = motion.move_toward(input_vector * MAXSPEED, ACCELERATION * delta)
+		motion = input_vector * MAXSPEED
 	
 func apply_friction(input_vector, delta):
-	if input_vector == Vector2.ZERO:
-		motion = motion.move_toward(Vector2.ZERO, FRICTION * delta)
+	motion.x = lerp(motion.x, 0, pow(2, -50 * delta))
+	motion.y = lerp(motion.y, 0, pow(2, -50 * delta))
 
 func set_player_name():
 	player_name_label.text = server.players[int(name)]["player_name"]

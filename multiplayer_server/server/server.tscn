@@ -4,3 +4,4 @@
 
 [node name="server" type="Node"]
 script = ExtResource( 1 )
+
